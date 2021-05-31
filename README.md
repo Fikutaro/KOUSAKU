@@ -1,24 +1,44 @@
-# README
+# おうち工作のひろば
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+「おうち工作のひろば」は、おうちで工作をしたいと思った人のためのアイデア共有サイトです。おうち工作に特化して、テーマやレビューを共有することで準備や製作をする際に役立つ情報を見つけることができます。
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+コロナ禍で増えたおうち時間に、工作を楽しんでもらいたいという思いから「おうち工作のひろば」を作ろうと考えました。工作したいと思った時に、材料や製作時間を選びながらテーマを探すことができます。子どもと工作をしたいと思っている親だけでなく、子どもが一人でこのサイトでテーマ探しをすることも想定し、わかりやすさと楽しいデザインを意識して製作しています。
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+図工の教員を行っていた時、子どもの創作意欲の大きさに感動したという経験から、このサイトを制作しようと考えました。私自身も子どものころ、「つくってあそぼ」という番組が大好きで、こんな工作が家でできたら楽しいだろうなと考えていました。しかし、材料がない、作り方を忘れる、という理由から、家で実際にこんな工作することは難しいと思っていました。その問題を、「材料」「製作時間」「難易度」を選んで工作のテーマ探しを行えるサイトがあれば解決できると考えました。子どもが、溢れる創作意欲を持てあますことがないよう、工作を行う手助けが出来れば良いなと考えています。
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+家で工作をしたいと思っている子ども
+家で子どもと工作をしたいと思っているおうちの人
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+作り方や遊び方を見ながら、工作を行うことができる。
+興味のある工作に必要な材料を確認することができる。
 
-* ...
+## 設計書
+製作中
+
+## チャレンジ要素一覧
+
+https://docs.google.com/spreadsheets/d/1ctt0GKu5UKCseMt1QoOtjzpuE-lf78BybGIQAc8Z-r0/edit#gid=0
+
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
+- 使用しない場合は、使用素材の項目を README から削除してください。
