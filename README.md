@@ -23,10 +23,14 @@
 興味のある工作に必要な材料を確認することができる。
 
 ## 設計書
-テーブル定義書 https://docs.google.com/spreadsheets/d/1SX_7sJnb5QEXsx3KjECKBc7jqNBWVtyg/edit#gid=1289205605
-ER図 https://app.diagrams.net/#G1h66tEpvT9MOY4XxTusWcDucgNlondkSq
-画面設計 https://app.diagrams.net/#G1oGFIVTp4PaeYfBinwSMhXFyXMZTcAV62
-アプリケーション詳細設計 https://docs.google.com/spreadsheets/d/1xBBlw67B1MmK-jB9dJu1j2MTa4yz5Xe7/edit#gid=379380439
+テーブル定義書<br>
+https://docs.google.com/spreadsheets/d/1SX_7sJnb5QEXsx3KjECKBc7jqNBWVtyg/edit#gid=1289205605<br>
+ER図<br>
+https://app.diagrams.net/#G1h66tEpvT9MOY4XxTusWcDucgNlondkSq<br>
+画面設計<br>
+https://app.diagrams.net/#G1oGFIVTp4PaeYfBinwSMhXFyXMZTcAV62<br>
+アプリケーション詳細設計<br>
+https://docs.google.com/spreadsheets/d/1xBBlw67B1MmK-jB9dJu1j2MTa4yz5Xe7/edit#gid=379380439<br>
 
 ## チャレンジ要素一覧
 
