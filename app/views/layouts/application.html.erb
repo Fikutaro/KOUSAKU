@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KOUSAKU</title>
+    <title>OUCHI-KOUSAKU</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js" defer></script>
 
+  </head>
   <body>
-    <%= yield %>
+    <%= render 'layouts/header'  %>
+    <main>
+      <%= yield %>
+    </main>
+    <%= render 'layouts/footer'  %>
   </body>
+
 </html>

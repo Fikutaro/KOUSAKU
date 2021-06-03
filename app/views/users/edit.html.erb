@@ -1,0 +1,45 @@
+ <div class="container">
+   <div class="row hoge">
+     <h1 class="heading08"><span>Customer Detail</span>会員さま詳細</h1>
+   </div>
+   <div class="row">
+     <div class="col-2"></div>
+     <div class="col-8">
+     <%= form_with model:@user, local:true do |f| %>
+       <table class="table">
+        <tr>
+          <td><lebel class="under">氏名</lebel></td>
+          <td>
+            <%= f.text_field :last_name,class:"form-control"  %>
+            <%= f.text_field :first_name,class:"form-control"  %>
+          </td>
+         </tr>
+        <tr>
+          <td><lebel class="under">フリガナ</lebel></td>
+          <td>
+            <%= f.text_field :kana_last_name,class:"form-control" %>
+            <%= f.text_field :kana_first_name,class:"form-control"  %>
+          </td>
+        </tr>
+        <tr>
+          <td><lebel class="under">表示名</lebel></td>
+          <td><%= f.text_field :nickname,class:"form-control"  %></td>
+        </tr>
+        <tr>
+          <td><lebel class="under">メールアドレス</lebel></td>
+          <td><%= f.email_field :email,class:"form-control"  %></td>
+        </tr>
+        <tr>
+        <td><label for="inputImage">ProfileImage</label>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "person.jpg", format: 'jpeg',size:'100x100'%></td>
+         <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></td>
+        </tr>
+
+       </table>
+       <div class="form-group">
+       <%= f.submit "編集内容を保存",class: "btn btn-outline-dark"%>
+       </div>
+       <% end %>
+     </div>
+  </div>
+</div>

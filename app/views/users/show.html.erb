@@ -1,0 +1,36 @@
+ <div class="container">
+   <div class="row ">
+      <h1 class="heading08"><span>My page</span>マイページ</h1>
+    </div>
+    <div class="row">
+     <div class="col-2"></div>
+     <div class="col-6">
+        <h3>登録情報</h3>
+        <%= link_to '編集する', edit_user_path(@user),  class: "btn btn-outline-success edit_customer_#{@user.id}" %>
+        <table class="table">
+          <tr>
+            <th>氏名</th>
+            <th><%= @user.last_name %><%= @user.first_name %></th>
+          </tr>
+          <tr>
+            <th>フリカナ</th>
+            <th><%= @user.kana_last_name %><%= @user.kana_first_name %></th>
+          </tr>
+          <tr>
+            <th>表示名</th>
+            <th><%= @user.nickname %></th>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <th><%= @user.email %></th>
+          </tr>
+          <tr>
+            <th>会員画像</th>
+            <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "person.jpg", size:'100x100'%></th>
+          </tr>
+        </table>
+     </div>
+   </div>
+ </div>
+
+

@@ -1,0 +1,32 @@
+<script>
+    $(document).ready(function() { $('#summernote').summernote({ placeholder: '記事本文を入力しましょう', tabsize: 3, height: 200 }); });
+</script>
+
+<h1>新規投稿</h1>
+<!-- form_with部分 -->
+<%= form_with model:@article, local:true do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>前書き</h4>
+  <%= f.text_field :preface %>
+
+  <h4>材料</h4>
+  <%= f.text_field :material %>
+
+  <h4>製作時間</h4>
+  <%= f.text_field :production_time %>
+
+  <h4>むずかしさ</h4>
+  <%= f.select :difficulty, Article.difficulties.keys, {default: 0}, class:'btn btn-outline-dark' %>
+
+  <h4>本文</h4>
+  <div class="field">
+  
+  <%= f.text_area :body ,value:@article.body,'data-provider': :summernote,id:"summernote"%>
+   </div>
+
+  <%= f.submit '投稿' %>
+
+<% end %>
