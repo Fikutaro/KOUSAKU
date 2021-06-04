@@ -6,6 +6,11 @@
 <!-- form_with部分 -->
 <%= form_with model:@article, local:true do |f| %>
 
+<h4>ProfileImage</h4>
+<%= attachment_image_tag @article, :article_image, :fill, 100, 100, format: 'jpeg',size:'300x300'%>
+<%= f.attachment_field :article_image, placeholder: "メイン画像" %>
+
+
   <h4>タイトル</h4>
   <%= f.text_field :title %>
 

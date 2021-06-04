@@ -1,2 +1,22 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+ <div class="container">
+   <div class="row hoge mt-5">
+     <div class='col-8'>
+      <div class="d-flex flex-column text-center">
+        <div><h1><%= @article.title %></h1></div>
+        <div><h5>
+          投稿者：<%= @article.user.nickname %>
+          <%= attachment_image_tag @article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'50x50'%>
+        </div></h5>
+        <div class="mt-5"><%= attachment_image_tag @article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "person.jpg", size:'300x300'%></div>
+        <div class="mt-5"><h2>前書き</h2></div>
+        <div><%= @article.preface %></div>
+        <div class="mt-5">かかる時間：<%= @article.production_time %></div>
+        <div>むずかしさ：<%= @article.difficulty %></div>
+        <div class="mt-5"><h2>材料</h2></div>
+        <div><%= @article.material %></div>
+        <div class="mt-5"><h2>つくりかた</h2></div>
+        <div class="width-100-percent"><%= sanitize @article.body%></div>
+      </div>
+     </div>
+   </div>
+ </div>

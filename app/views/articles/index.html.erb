@@ -1,20 +1,23 @@
 <div class='container'>
   <div class='row'>
-    
+
     <% @articles.each do |article| %>
     <div class='col-6'>
-     <div class="d-flex flex-column text-center">
-
-     <div><%= image_tag 'person.jpg', :size =>'300x300' %></div>
-     <div><h4><%= article.title %><h4></div>
-     <div><%= article.preface %></div>
-     <div><%= article.material %></div>
-     <div><%= article.production_time %></div>
-     <div><%= article.difficulty %></div>
-     <div><%= article.user.nickname %></div>
-     <div><%= sanitize article.body %></div>
-     </div>
-     </div>
+      <div class="d-flex flex-column text-center">
+         <%= link_to article_path(article) do %>
+         <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "person.jpg", size:'300x300'%></div>
+         <div><h2><%= article.title %><h2></div>
+         <% end %>
+         <div><h4><%= article.preface %></h4></div>
+         <div>材料：<%= article.material %></div>
+         <div>かかる時間：<%= article.production_time %></div>
+         <div>むずかしさ：<%= article.difficulty %></div>
+         <div>
+             投稿者：<%= article.user.nickname %>
+             <%= attachment_image_tag article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'50x50'%>
+         </div>
+      </div>
+    </div>
 
     <% end %>
 
