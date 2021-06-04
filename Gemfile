@@ -73,7 +73,6 @@ gem 'ransack'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'summernote-rails'
-gem 'simple_form'
 group :production do
   gem 'mysql2'
 end
