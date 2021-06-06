@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
+
   get "favorites" =>"favorites#index"
 
   root :to => "homes#top"
