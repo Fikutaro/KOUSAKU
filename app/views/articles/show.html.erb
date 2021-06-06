@@ -7,6 +7,12 @@
           投稿者：<%= @article.user.nickname %>
           <%= attachment_image_tag @article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'50x50'%>
         </div></h5>
+        <div class="mt-5">
+          <% if @article.user == current_user %>
+            <%= link_to '編集する', edit_article_path(@article), class: "btn btn-sm btn-success edit_article_#{@article.id}" %>
+            <%= link_to 'この記事を削除する', article_path(@article), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_article_#{@article.id}"%>
+          <% end %>
+        </div>
         <div class="mt-5"><%= attachment_image_tag @article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "person.jpg", size:'300x300'%></div>
         <div class="mt-5"><h2>前書き</h2></div>
         <div><%= @article.preface %></div>
@@ -17,6 +23,28 @@
         <div class="mt-5"><h2>つくりかた</h2></div>
         <div class="width-100-percent"><%= sanitize @article.body%></div>
       </div>
+
+      <div class="comments">
+      <p>コメント件数：<%= @article.comments.count %></p>
+      <% @article.comments.each do |comment| %>
+        <p>  <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'50x50'%>
+        <%= comment.user.nickname %></p>
+        <%= comment.comment_content %>　<%= comment.created_at.strftime('%Y/%m/%d') %>
+        <% if comment.user == current_user %>
+           <%= link_to "コメントを削除", article_comment_path(comment.article, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+        <% end %>
+       <% end %>
+      </div>
+      <div class="new-comment">
+      <%= form_with(model:[@article, @comment], local: true) do |f| %>
+        <%= f.text_area :comment_content, rows:'5',placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+      </div>
      </div>
    </div>
  </div>
+
+ <div class='star-btn' id="favorite_<%= @article.id %>">
+  <%= render "favorites/favorite", article: @article %>
+</div>

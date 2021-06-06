@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -14,11 +15,34 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    @article.save
+    tag_list = params[:article][:tag_ids].split(",")
+    if @article.save
+      @article.save_tags(tag_list)
     redirect_to articles_path
+    end
   end
 
   def edit
+    @article = Article.find(params[:id])
+    @tag_list =@article.tags.pluck(:tag_name).join(",")
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    tag_list = params[:article][:tag_ids].split(',')
+    if @article.update(article_params)
+      @article.save_tags(tag_list)
+      redirect_to user_path(current_user.id), success: "更新しました"
+    else
+      flash.now[:danger] = '更新に失敗しました。'
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to articles_path
   end
 
   private
