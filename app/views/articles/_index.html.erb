@@ -1,0 +1,31 @@
+<div class='row'>
+    <% articles.each do |article| %>
+    <div class='col-6'>
+      <div class="d-flex flex-column text-center">
+         <%= link_to article_path(article) do %>
+         <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "person.jpg", size:'300x300'%></div>
+         <div><h2><%= article.title %><h2></div>
+         <% end %>
+         <div><h4><%= article.preface %></h4></div>
+         <div>材料：<%= article.material %></div>
+         <div>かかる時間：<%= article.production_time %></div>
+         <div>むずかしさ：<%= article.difficulty %></div>
+         <div>
+             投稿者：<%= article.user.nickname %>
+             <%= attachment_image_tag article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'30x30'%>
+         </div>
+         <div>
+            <% article.tags.each do |tag| %>
+              タグ：<%= tag.tag_name %>
+            <% end %>
+            <div class='star-btn' id="favorite_<%= article.id %>">
+              <%= render "favorites/favorite", article: article %>
+            </div>
+         </div>
+      </div>
+    </div>
+
+    <% end %>
+
+
+  </div>

@@ -1,6 +1,7 @@
  <div class="container">
    <div class="row hoge mt-5">
      <div class='col-8'>
+       <button class="print">作り方を印刷する</button>
       <div class="d-flex flex-column text-center">
         <div><h1><%= @article.title %></h1></div>
         <div><h5>
@@ -24,6 +25,7 @@
         <div class="width-100-percent"><%= sanitize @article.body%></div>
       </div>
 
+      <div class="print-hide">
       <div class="comments">
       <p>コメント件数：<%= @article.comments.count %></p>
       <% @article.comments.each do |comment| %>
@@ -41,10 +43,12 @@
         <%= f.submit "送信する" %>
       <% end %>
       </div>
+      <div class='star-btn' id="favorite_<%= @article.id %>">
+        <%= render "favorites/favorite", article: @article %>
+      </div>
+      </div>
      </div>
    </div>
  </div>
 
- <div class='star-btn' id="favorite_<%= @article.id %>">
-  <%= render "favorites/favorite", article: @article %>
-</div>
+

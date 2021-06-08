@@ -1,8 +1,15 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all
   end
 
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @articles = Article.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+  
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new

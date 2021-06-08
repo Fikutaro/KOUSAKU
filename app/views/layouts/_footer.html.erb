@@ -1,8 +1,32 @@
-<footer>
-  <div class='container mt-5'>
-    <div class='row'>
-      <div class='mx-auto'>
-        <h3>hutta-</h3>
+<footer class='border-top border-dark mt-3'>
+  <div class="container">
+    <div class="row">
+      <div class='col-sm text-center mt-2'>
+        <a class="navbar-brand" href="/">
+          <span><%= image_tag '/assets/logo.png', :size => '200x110' %></span>
+        </a>
+        <strong>つくりたい、がみつかる</br>
+        @Fukutaro 2021</strong>
+      </div>
+      <div class='col-sm text-center mt-2'>
+        <div class='border-bottom border-dark'>
+          <h4><strong>工作をみる</strong></h4>
+        </div>
+        <div>
+          <h5><%= link_to ' みんなの工作',articles_path,class: 'fas fa-palette nav-link text-dark' %></h5>
+        </div>
+        <div>
+          <h5><%= link_to ' 工作をさがす',articles_path,class: 'fas fa-search nav-link text-dark' %></h5>
+        </div>
+      </div>
+      <div class='col-sm text-center mt-2'>
+        <div class='border-bottom border-dark'>
+          <h4><strong>おうち工作の</br>ひろばって？</strong></h4>
+        </div>
+        <div>
+          <h5><%= link_to 'このサイトについて',articles_path,class: 'fas fa-comment nav-link text-dark' %></h5>
+        </div>
+
       </div>
     </div>
   </div>

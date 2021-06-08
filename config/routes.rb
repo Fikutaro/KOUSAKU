@@ -8,12 +8,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-
-
-  get "favorites" =>"favorites#index"
+  get 'search' => 'articles#search'
+  
+ 
 
   root :to => "homes#top"
   get "homes/about" =>"homes#about"
-
+  get "favorites" =>"favorites#index"
 
 end

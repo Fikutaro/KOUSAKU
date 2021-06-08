@@ -9,6 +9,10 @@ class Article < ApplicationRecord
   attachment :article_image
   
   
+  def self.search(keyword)
+  where(["title like? OR body like? OR preface like? OR material like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
+  
   def save_tags(savearticle_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - savearticle_tags

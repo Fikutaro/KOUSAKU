@@ -1,31 +1,22 @@
 <div class='container'>
   <div class='row'>
-
-    <% @articles.each do |article| %>
-    <div class='col-6'>
-      <div class="d-flex flex-column text-center">
-         <%= link_to article_path(article) do %>
-         <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "person.jpg", size:'300x300'%></div>
-         <div><h2><%= article.title %><h2></div>
-         <% end %>
-         <div><h4><%= article.preface %></h4></div>
-         <div>材料：<%= article.material %></div>
-         <div>かかる時間：<%= article.production_time %></div>
-         <div>むずかしさ：<%= article.difficulty %></div>
-         <div>
-             投稿者：<%= article.user.nickname %>
-             <%= attachment_image_tag article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'50x50'%>
-         </div>
-         <div>
-            <% article.tags.each do |tag| %>
-              <%= tag.tag_name %>
-            <% end %>
-         </div>
-      </div>
-    </div>
-
+       <%= form_with url: articles_path, method: :get, class: 'jiyuu' do %>
+      <%= select_tag :tag_id,
+        options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+        {
+          prompt: 'タグで絞り込み',
+          class: 'jiyuu',
+          onchange: 'submit(this.form);'
+        }%>
     <% end %>
-
     
+    <p>検索</p>
+   <div class="search-form">
+       <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword %>
+        <%= f.submit "検索" %>
+       <% end %>
+   </div>
   </div>
+   <%= render "articles/index", articles: @articles %>
 </div>
