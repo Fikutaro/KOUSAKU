@@ -1,4 +1,7 @@
 <div class='container'>
+  <div class="row ">
+      <h1 class="heading08"><span>Crafts</span>みんなの工作</h1>
+  </div>
   <div class='row'>
        <%= form_with url: articles_path, method: :get, class: 'jiyuu' do %>
       <%= select_tag :tag_id,
@@ -9,7 +12,7 @@
           onchange: 'submit(this.form);'
         }%>
     <% end %>
-    
+
     <p>検索</p>
    <div class="search-form">
        <%= form_with url: search_path, method: :get, local: true do |f| %>

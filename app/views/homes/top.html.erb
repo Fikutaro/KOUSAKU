@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <% @all_ranks.each.with_index(1) do |article, i| %>
-      <div class='col-3 mt-5'>
+      <div class='col-lg-3 col-xs-3 mt-5'>
         <h1 class='text-warning'>
           第　<%= i %>　位
         </h1>
@@ -12,12 +12,12 @@
           お気に入り数：<%= article.favorites.count %>
         </h2>
       </div>
-      <div class='col-4 mt-5'>
+      <div class='col-lg-4 col-xs-5 mt-5'>
         <%= link_to article_path(article) do %>
           <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "person.jpg", size:'300x300'%></div>
         <% end %>
       </div>
-      <div class='col-5 mt-5'>
+      <div class='col-lg-5 col-xs-4 mt-5'>
         <div class="d-flex flex-column">
           <%= link_to article_path(article) do %>
             <div><h2>タイトル:<%= article.title %><h2></div>
@@ -31,8 +31,9 @@
             <%= attachment_image_tag article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'30x30'%>
           </div>
           <div>
+            タグ：
             <% article.tags.each do |tag| %>
-              タグ：<%= tag.tag_name %>
+              <%= tag.tag_name %>
             <% end %>
           </div>
           <div class='star-btn' id="favorite_<%= article.id %>">
@@ -42,4 +43,26 @@
       </div>
     <% end %>
   </div>
+  <div class='row hoge mt-5'>
+    <h1>じょうけんからさがす</h1>
+  </div>
+  <div class='row'>
+    <div class='col-4 text-center'>
+      <%= link_to '/articles?utf8=%E2%9C%93&tag_id=8' do %>
+        <%= image_tag 'kantan2.png', :size => '200x200' %>
+
+      <% end %>
+    </div>
+    <div class='col-4 text-center'>
+      <%= link_to '/articles?utf8=%E2%9C%93&tag_id=11' do %>
+        <%= image_tag'asoberu2.png', :size => '200x200' %>
+      <% end %>
+    </div>
+    <div class='col-4 text-center'>
+      <%= link_to '/articles?utf8=%E2%9C%93&tag_id=10' do %>
+        <%= image_tag'tanjikan2.png', :size => '200x200' %>
+      <% end %>
+    </div>
+  </div>
 </div>
+

@@ -1,4 +1,7 @@
 <div class='container'>
+  <div class="row ">
+      <h1 class="heading08"><span>Favorites</span>お気に入り</h1>
+  </div>
   <% if @favorite_list.present? %>
   <%= render "articles/index", articles: @favorite_list %>
   <% end %>
