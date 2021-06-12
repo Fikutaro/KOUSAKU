@@ -1,20 +1,17 @@
 <% if user_signed_in? %>
   <% unless article.user.id == current_user.id %>
     <% if !Favorite.exists?(user_id: current_user.id, article_id: article.id) %>
-      <p>
+      <p class='favorite-color'>
         <%= link_to article_favorites_path(article), method: :post, remote: true do %>
-          <i class="fas fa-star star-icon1"></i>
-          お気に入り
+          <%= image_tag'okini2.png', :size => '100x75' %>
         <% end %>
-        <span class="star-count1"><%= article.favorites.count %></span>
+
       </p>
       <% else %>
-      <p>
+      <p class='favorite-color'>
         <%= link_to article_favorites_path(article), method: :delete, remote: true  do %>
-          <i class="fas fa-star star-icon2"></i>
-          お気に入り解除
+          <%= image_tag'okini3.png', :size => '100x75' %>
         <% end %>
-         <span class="star-count1"><%= article.favorites.count %></span>
       </p>
     <% end %>
   <% end %>

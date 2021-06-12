@@ -38,6 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :kana_first_name
       t.string :nickname
       t.string :profile_image_id
+      t.text :introduction
       t.timestamps null: false
     end
 

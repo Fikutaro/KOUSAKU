@@ -18,6 +18,12 @@
 @import 'font-awesome';
 @import "summernote-bs4";
 
+body{
+  background-image:image-url("paper3.png");
+}
+
+
+
 .row.hoge{
     display: flex;
     justify-content: center;
@@ -48,13 +54,13 @@
 }
 
 header{
-	background-image: url('wood.jpg');
+	background-image:image-url('wood.jpg');
 	background-size:cover;
 }
 
 
 footer{
-	background-image: url('wood.jpg');
+	background-image:image-url('wood.jpg');
 	background-size:cover;
 }
 
@@ -62,3 +68,64 @@ h1{
     font-family: 'Permanent Marker', cursive;
 }
 
+.tag {
+  position: relative;
+  display: inline-block;
+  padding: 0rem 0.5rem 0rem 2rem;
+  color: #fff;
+  border-radius: 100vh 0 0 100vh;
+  background: #fa4141;
+  text-decoration: none;
+}
+
+.tag:before {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
+
+.favorite-color {
+  margin-left:200px;
+}
+
+.no-underline{
+  text-decoration:none !important;
+
+}
+
+.hukidasi {
+  position: relative;
+  padding: 0.5rem;
+  border: 3px solid #d8d8d8;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
+.hukidasi:before {
+  position: absolute;
+  bottom: -14px;
+  left: 1em;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 14px 12px 0 12px;
+  border-style: solid;
+  border-color: #d8d8d8 transparent transparent transparent;
+}
+
+.hukidasi:after {
+  position: absolute;
+  bottom: -10px;
+  left: 1em;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 14px 12px 0 12px;
+  border-style: solid;
+  border-color: #f9f9f9 transparent transparent transparent;
+}

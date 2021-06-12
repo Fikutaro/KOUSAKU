@@ -7,22 +7,26 @@
          <div><h2><%= article.title %><h2></div>
          <% end %>
          <div><h4><%= article.preface %></h4></div>
+         <div>
+            <% article.tags.each do |tag| %>
+             <%= link_to "/articles?utf8=%E2%9C%93&tag_id=#{tag.id}", class:"no-underline" do %>
+              <span class='tag'><%= tag.tag_name %></span>
+             <% end %>
+            <% end %>
+        </div>
          <div>材料：<%= article.material %></div>
          <div>かかる時間：<%= article.production_time %></div>
          <div>むずかしさ：<%= article.difficulty %></div>
          <div>
+             <%= link_to user_path(article.user) do %>
              投稿者：<%= article.user.nickname %>
-             <%= attachment_image_tag article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'30x30'%>
+             <%= attachment_image_tag article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'40x40', class:"rounded-circle" %>
+             <% end %>
          </div>
-         <div>
-           タグ：
-            <% article.tags.each do |tag| %>
-              <td><%= tag.tag_name %><td>
-            <% end %>
-            <div class='star-btn' id="favorite_<%= article.id %>">
-              <%= render "favorites/favorite", article: article %>
-            </div>
-         </div>
+
+        <div class='star-btn' id="favorite_<%= article.id %>">
+          <%= render "favorites/favorite", article: article %>
+        </div>
       </div>
     </div>
 
