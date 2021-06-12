@@ -15,10 +15,6 @@
 //= require bootstrap-sprockets
 
 //= require rails-ujs
-//= require activestorage
-//= require turbolinks
-//= require_tree .
-
 //= require jquery
 //= require jquery_ujs
 //= require popper
@@ -34,17 +30,17 @@ $(function(){
     let header = $('header'),
         footer = $('footer');
         comments = $('.print-hide');
-        
+
     header.hide();
     footer.hide();
     comments.hide();
-    
+
 
     window.print();
 
     header.show();
     footer.show();
     comments.show();
-    
+
   });
 });
