@@ -2,6 +2,11 @@
   <div class="row hoge">
     <h1>みんなのお気に入りランキング</h1>
   </div>
+  <% if @all_ranks.empty? %>
+  <div class="row hoge">
+    <h3>表示する記事がありません</h3>
+  </div>
+  <% else %>
   <div class="row">
     <% @all_ranks.each.with_index(1) do |article, i| %>
       <div class='col-lg-3 col-xs-3 mt-5'>
@@ -44,6 +49,7 @@
       </div>
     <% end %>
   </div>
+  <% end %>
   <div class='row hoge mt-5'>
     <h1>じょうけんからさがす</h1>
   </div>
