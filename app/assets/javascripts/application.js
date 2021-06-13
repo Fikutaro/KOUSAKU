@@ -10,13 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
-
-//= require rails-ujs
 //= require jquery
-//= require jquery_ujs
+//= require rails-ujs
 //= require popper
 //= require bootstrap
 //= require summernote/summernote-bs4.min
@@ -24,6 +19,9 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// load specific locale(ja-JP)
+//= require summernote/lang/summernote-ja-JP
 
 $(function(){
   $('.print').click(function(){
@@ -44,3 +42,4 @@ $(function(){
 
   });
 });
+

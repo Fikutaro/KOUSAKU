@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+
+
   def index
     @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all
   end
@@ -9,7 +11,7 @@ class ArticlesController < ApplicationController
     @keyword = params[:keyword]
     render "index"
   end
-  
+
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
@@ -53,6 +55,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
     params.require(:article).permit(:title, :article_image, :preface, :body, :material, :production_time, :difficulty)
   end

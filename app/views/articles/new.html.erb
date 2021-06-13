@@ -1,20 +1,3 @@
-<script>
-    $(document).ready(function() {
-      $('#summernote').summernote({ placeholder: '記事本文を入力しましょう',
-      tabsize: 3,
-      height: 400,
-      lang: "ja-JP",
-      fontSizes: ['8', '9', '10', '11', '12', '13','14', '18', '24', '36'],
-      toolbar: [
-        ['style', ['bold', 'italic', 'underline', 'clear']], //太字や斜字など
-        ['fontsize', ['fontsize']], //文字の大きさ
-        ['color', ['color']],
-        ['para', ['ul', 'ol']], //リスト化
-        ['insert', ['picture','link']], //リンク化
-        ['view', ['codeview', 'help']],
-        ]}); });
-</script>
-
 <div class='container'>
   <div class='row'>
     <h1 class="heading08"><span>New POST</span>投稿入力</h1>
@@ -50,7 +33,7 @@
       <h4>本文</h4>
       <div class="field">
 
-      <%= f.text_area :body ,value:@article.body,'data-provider': :summernote,id:"summernote"%>
+      <%= f.text_area :body ,value:@article.body, 'data-provider': :summernote %>
        </div>
 
       <%= f.submit '投稿' %>

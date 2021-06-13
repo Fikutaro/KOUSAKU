@@ -14,15 +14,14 @@
  *= require_self
  */
 @import "bootstrap";
+@import "summernote-bs4";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import "summernote-bs4";
+
 
 body{
-  background-image:image-url("paper3.png");
+  background-image:image-url("maru5.jpg");
 }
-
-
 
 .row.hoge{
     display: flex;
