@@ -126,3 +126,56 @@ h1{
   border-style: solid;
   border-color: #f9f9f9 transparent transparent transparent;
 }
+
+.search-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
+
+.search-form{
+  position: relative;
+  width:245px;
+  box-sizing: border-box;
+}
+
+.search-form input[type="submit"]{
+  cursor: pointer !important;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  background: #3879D9;
+  color: #fff;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  outline : none;
+  position: absolute;
+  top: -7px;
+  right: -15px;
+}
+
+.tag-search-form {
+  border-right: 2px solid;
+}
+
+.pagination-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.c{
+  height: 500px;
+  width :100%;
+}
+
+.slick-dots {
+  li {
+    font-size: 30px !important;
+    button:before {
+      font-size: 20px !important;
+      color: rgb(0, 0, 100) !important;
+    }
+  }
+}

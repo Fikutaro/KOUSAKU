@@ -73,7 +73,7 @@ gem 'ransack'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'summernote-rails'
-gem 'rails-i18n'
+gem 'bootstrap4-kaminari-views'
 group :production do
   gem 'mysql2'
 end

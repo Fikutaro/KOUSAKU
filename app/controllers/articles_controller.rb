@@ -2,12 +2,12 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all
+    @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles.page(params[:page]).per(8) : Article.all.page(params[:page]).per(8)
   end
 
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @articles = Article.search(params[:keyword])
+    @articles = Article.search(params[:keyword]).page(params[:page]).per(8)
     @keyword = params[:keyword]
     render "index"
   end

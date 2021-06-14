@@ -42,7 +42,7 @@
       <h3 class='text-center'>この人の工作</h3>
       <% @articles.each do |article| %>
 
-      <div class="d-flex flex-column text-center">
+      <div class="d-flex flex-column text-center mt-3 pb-3">
          <%= link_to article_path(article) do %>
          <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "person.jpg", size:'300x300' %></div>
          <div><h2><%= article.title %><h2></div>
