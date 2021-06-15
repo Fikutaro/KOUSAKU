@@ -2,7 +2,74 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.new-limit > form{
+    max-width: 57%;
+}
+
 .width-100-percent > p >img {
     max-width: 100%;
 }
 
+.article-new input {
+  background: #f0f6ff;
+  border: none;
+  border-bottom: 2px solid #2f4f4f;
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  height: 50px;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.main-field {
+    max-width: 100%;
+}
+
+.need{
+    background-color: red;
+    color: white;
+    font-size: 12px;
+}
+
+.tag-all{
+  position: relative;
+  display: inline-block;
+  padding: 0rem 0.5rem 0rem 2rem;
+  color: #fff;
+  border-radius: 100vh 0 0 100vh;
+  background: #fa4141;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.tag-all:before {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
+
+
+[type="submit"] {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  background:#ff66b8;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+  margin-top:2em;
+}
+
+[type="submit"]:hover { background:#ff1a94; }

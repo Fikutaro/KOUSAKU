@@ -19,6 +19,9 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @tags = Tag.all
+    @tag_map =TagMap.all
+    @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
   end
 
   def create
@@ -34,6 +37,8 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
     @tag_list =@article.tags.pluck(:tag_name).join(",")
+    @tag_map =TagMap.all
+    @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
   end
 
   def update

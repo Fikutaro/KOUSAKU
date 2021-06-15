@@ -32,7 +32,7 @@
         <tr>
           <td>
             <label for="inputImage">ProfileImage</label>
-            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "person.jpg", format: 'jpeg',size:'100x100'%>
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "person.jpg", format: 'jpeg',size:'100x100', class:"rounded-circle"%>
           </td>
           <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></td>
         </tr>

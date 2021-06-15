@@ -1,41 +1,49 @@
-<script>
-    $(document).ready(function() { $('#summernote').summernote({ placeholder: '記事本文を入力しましょう', tabsize: 3, height: 200 }); });
-</script>
+<div class='container'>
+  <div class='row'>
+    <h1 class="heading08"><span>Edit Article</span>投稿編集</h1>
+  </div>
+  <div class='row hoge new-limit'>
+    <!-- form_with部分 -->
+    <%= form_with model:@article, local:true do |f| %>
 
-<h1>投稿編集</h1>
-<!-- form_with部分 -->
-<%= form_with model:@article, local:true do |f| %>
+    <h5>メイン画像</h5>
+    <%= attachment_image_tag @article, :article_image, :fill, 100, 100, format: 'jpeg',size:'300x300'%>
+    <%= f.attachment_field :article_image, placeholder: "メイン画像" %>
 
-<h4>ProfileImage</h4>
-<%= attachment_image_tag @article, :article_image, :fill, 100, 100, format: 'jpeg',size:'300x300'%>
-<%= f.attachment_field :article_image, placeholder: "メイン画像" %>
+<div class='article-new'>
+      <h5>タイトル<span class="need">必須</span></h5>
+      <%= f.text_field :title, placeholder: '50文字以内で記入してください'%>
+
+      <h5>前書き</h5>
+      <%= f.text_area :preface, style:"width:100%;""height:7em;" %>
+
+      <h5>タグ</h5>
+      <%= f.text_field :tag_ids,value: @tag_list,\
+        placeholder: "タグを複数つけるには　,(カンマ)　で区切ってください。" %>
+        
+      <span>よく使われているタグ【使用数】</span><br>
+     <% @tag_ranks.each do |tag| %>
+     <span class='tag-all '><%= tag.tag_name %>【<%= @tag_map.where(tag_id: tag.id).count %>】</span>
+     <% end %>
 
 
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
+      <h5>材料<span class="need">必須</span></h5>
+      <%= f.text_field :material, placeholder: '複数ある場合は(スペース)で区切ってください。' %>
 
-  <h4>前書き</h4>
-  <%= f.text_field :preface %>
-  
-   <h4>タグ<h4>
-  <%= f.text_field :tag_ids, value: @tag_list,\
-    placeholder: "タグを複数つけるには','で区切ってください。" %>
+      <h5>製作時間<span class="need">必須</span></h5>
+      <%= f.text_field :production_time %>
 
-  <h4>材料</h4>
-  <%= f.text_field :material %>
+      <h5>むずかしさ</h5>
+      <%= f.select :difficulty, Article.difficulties.keys, {default: 0}, class:'btn btn-outline-dark' %>
 
-  <h4>製作時間</h4>
-  <%= f.text_field :production_time %>
+      <h5>本文<span class="need">必須</span></h5>
+      <div class="main-field">
 
-  <h4>むずかしさ</h4>
-  <%= f.select :difficulty, Article.difficulties.keys, {default: 0}, class:'btn btn-outline-dark' %>
+      <%= f.text_area :body ,value:@article.body, 'data-provider': :summernote %>
+      </div>
+</div>
+      <%= f.submit '編集する！',type:"submit" %>
 
-  <h4>本文</h4>
-  <div class="field">
-  
-  <%= f.text_area :body ,value:@article.body,'data-provider': :summernote,id:"summernote"%>
-   </div>
-
-  <%= f.submit '投稿' %>
-
-<% end %>
+    <% end %>
+  </div>
+</div>
