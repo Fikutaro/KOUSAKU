@@ -15,4 +15,5 @@ class User < ApplicationRecord
   validates :kana_last_name, presence: true, length: { maximum: 100 }
   validates :kana_first_name, presence: true, length: { maximum: 100 }
   validates :nickname, presence: true, length: { maximum: 100 }
+  
 end
