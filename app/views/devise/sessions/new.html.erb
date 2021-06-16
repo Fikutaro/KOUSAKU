@@ -1,5 +1,13 @@
+<div class='text-center text-danger'>
+
+    <div class="bg-danger text-white">
+    <%= flash[:alert]%>
+      </div>
+
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
 <div class="form-wrapper">
   <h1>ログイン</h1>
   <form>

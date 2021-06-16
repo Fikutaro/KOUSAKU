@@ -1,4 +1,13 @@
- <div class="container">
+<div class='text-center text-danger'>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+    <div class="bg-danger text-white">
+     <li><%= message %></li>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="container">
    <div class="row hoge">
      <h1 class="heading08"><span>Customer Detail</span>会員さま詳細</h1>
    </div>

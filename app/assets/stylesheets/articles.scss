@@ -55,7 +55,7 @@
 }
 
 
-[type="submit"] {
+.article-new [type="submit"] {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   width: 100%;
   background:#ff66b8;
@@ -72,4 +72,5 @@
   margin-top:2em;
 }
 
-[type="submit"]:hover { background:#ff1a94; }
+.article-new[type="submit"]:hover {
+  background:#ff1a94; }

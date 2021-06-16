@@ -30,7 +30,12 @@ class ArticlesController < ApplicationController
     tag_list = params[:article][:tag_ids].split(",")
     if @article.save
       @article.save_tags(tag_list)
-    redirect_to articles_path
+      redirect_to articles_path
+    else
+      @tags = Tag.all
+      @tag_map =TagMap.all
+      @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
+      render :new
     end
   end
 
@@ -48,7 +53,9 @@ class ArticlesController < ApplicationController
       @article.save_tags(tag_list)
       redirect_to user_path(current_user.id), success: "更新しました"
     else
-      flash.now[:danger] = '更新に失敗しました。'
+      @tag_list =@article.tags.pluck(:tag_name).join(",")
+      @tag_map =TagMap.all
+      @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
       render 'edit'
     end
   end
