@@ -9,7 +9,7 @@
 </div>
 <div class='container'>
   <div class='row'>
-    <h1 class="heading08"><span>New Article</span>投稿入力</h1>
+    <h1 class="heading08"><span>New Article</span>新しい投稿</h1>
   </div>
   <div class='row hoge new-limit'>
     <!-- form_with部分 -->
@@ -43,6 +43,8 @@
 
       <h5>むずかしさ<span class="need">必須</span></h5>
       <%= f.select :difficulty, Article.difficulties.keys, {default: 0}, class:'btn btn-outline-dark' %>
+
+      <%= f.file_field :video %>
 
       <h5>本文<span class="need">必須</span></h5>
       <div class="main-field">

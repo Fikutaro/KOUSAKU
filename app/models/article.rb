@@ -12,11 +12,13 @@ class Article < ApplicationRecord
   validates :preface, length: { maximum: 1000 }
   validates :material, presence: true, length: { maximum: 500 }
   validates :production_time, presence: true, length: { maximum: 500 }
-  validates :difficulty, exclusion: { in: %w(選択してください), message: 'を選んでください。' }
+  validates :difficulty, exclusion: { in: %w(選択してください), message: "を選んでください。" }
   validates :body, presence: true
 
+  has_one_attached :video
+
   def self.search(keyword)
-  where(["title like? OR body like? OR preface like? OR material like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    where(["title like? OR body like? OR preface like? OR material like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
 
   def save_tags(savearticle_tags)
@@ -36,5 +38,5 @@ class Article < ApplicationRecord
   end
 
   enum difficulty: {
-    '選択してください': 0, 'かんたん':1, 'ふつう':2, 'むずかしい':3}
+    "選択してください": 0, "かんたん":1, "ふつう":2, "むずかしい":3}
 end

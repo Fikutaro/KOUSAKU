@@ -17,10 +17,11 @@
 @import "summernote-bs4";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-
+@import url('https://fonts.googleapis.com/css?family=Kosugi');
 
 body{
   background-image:image-url("maru5.jpg");
+  font-family:'Kosugi', sans-serif;
 }
 
 .row.hoge{
@@ -62,7 +63,7 @@ footer{
 }
 
 h1{
-    font-family: 'Permanent Marker', cursive;
+  font-family: 'Corben','Kosugi', sans-serif;;
 }
 
 .tag {
@@ -135,7 +136,7 @@ h1{
 
 .search-form{
   position: relative;
-  width:245px;
+  width: 230px;
   box-sizing: border-box;
 }
 
