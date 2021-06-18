@@ -6,7 +6,11 @@
     max-width: 57%;
 }
 
-.width-100-percent > p >img {
+.width-100-percent > p > img {
+    max-width: 100%;
+}
+
+.width-100-percent > img {
     max-width: 100%;
 }
 

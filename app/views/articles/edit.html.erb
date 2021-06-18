@@ -16,7 +16,7 @@
 
       <h5>メイン画像</h5>
       <%= attachment_image_tag @article, :article_image, :fill, 100, 100, format: "jpeg",size:"300x300"%>
-      <%= f.attachment_field :article_image, placeholder: "メイン画像" %>
+      <div class="nonefont"><%= f.attachment_field :article_image, placeholder: "メイン画像" %> </div>
 
       <div class="article-new">
         <h5>タイトル<span class="need">必須</span></h5>

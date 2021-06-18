@@ -8,3 +8,30 @@ li i{
  margin:0 20px;
 }
 
+.nav-link {
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  transform: scale(1.3, 1.3) !important;
+}
+
+.color1:hover{
+  color: #FF2E31 !important;
+}
+
+.color2:hover{
+  color: #FF852E !important;
+}
+
+.color3:hover{
+  color: #FFF62E !important;
+}
+
+.color4:hover{
+  color: #2EFF4C !important;
+}
+
+.color5:hover{
+  color: #5E97F7 !important;
+}

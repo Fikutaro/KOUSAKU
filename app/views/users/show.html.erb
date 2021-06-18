@@ -4,10 +4,7 @@
    </div>
     <div class="row">
      <div class="col-4">
-        <h3 class='text-center'>登録情報</h3>
-        <% if @user.id == current_user.id %>
-          <%= link_to '編集する', edit_user_path(@user),  class: "btn btn-outline-success edit_customer_#{@user.id}" %>
-        <% end %>
+        <h3 class='text-center pb-5'>会員情報</h3>
         <table class="table">
           <% if @user.id == current_user.id %>
             <tr>
@@ -36,10 +33,13 @@
             <th><%= @user.introduction %></th>
           </tr>
         </table>
+         <% if @user.id == current_user.id %>
+          <%= link_to '会員情報を編集する', edit_user_path(@user),  class: "btn btn-outline-success text-center edit_customer_#{@user.id}" %>
+        <% end %>
      </div>
 
      <div class='col-8'>
-      <h3 class='text-center'>この人の工作</h3>
+      <h3 class='text-center pb-5'>この人の工作</h3>
       <% @articles.each do |article| %>
 
       <div class="d-flex flex-column text-center mt-3 pb-3">
@@ -62,6 +62,7 @@
          <div>
             <% if article.user == current_user %>
             <%= link_to '編集する', edit_article_path(article), class: "btn btn-sm btn-success edit_article_#{article.id}" %>
+            <%= link_to "削除する", article_path(article), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_article_#{article.id}"%>
           <% end %>
          </div>
       </div>
