@@ -16,7 +16,7 @@
               <%= link_to "この記事を削除する", article_path(@article), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_article_#{@article.id}"%>
             <% end %>
           </div>
-          <div class="mt-5"><%= attachment_image_tag @article, :article_image, :fill, 300, 300, format: "jpeg", fallback: "person.jpg", size:"300x300"%></div>
+          <div class="mt-5"><%= attachment_image_tag @article, :article_image, :fill, 600, 300, format: "jpeg", fallback: "person.jpg"%></div>
 
           <div class="mt-5"><h2>前書き</h2></div>
           <div><%= @article.preface %></div>

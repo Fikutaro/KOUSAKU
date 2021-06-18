@@ -1,16 +1,16 @@
-<div class='container'>
+<div class="container">
   <div class="row ">
-      <h1 class="heading08"><span>Crafts</span>みんなの工作</h1>
+    <h1 class="heading08"><span>Crafts</span>みんなの工作</h1>
   </div>
-  <div class='search-right'>
+  <div class="search-right">
     <div class="tag-search-form">
-      <%= form_with url: articles_path, method: :get, class: 'jiyuu' do %>
+      <%= form_with url: articles_path, method: :get, class: "jiyuu" do %>
         <%= select_tag :tag_id,
         options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
         {
-        prompt: 'タグで検索',
-        class: 'jiyuu',
-        onchange: 'submit(this.form);'
+        prompt: "タグで検索",
+        class: "jiyuu",
+        onchange: "submit(this.form);"
         }%>
       <% end %>
     </div>
@@ -23,7 +23,7 @@
     </div>
   </div>
   <%= render "articles/index", articles: @articles %>
-<div class='pagination-area'>
-    <%= paginate @articles, theme: 'twitter-bootstrap-4'%>
+  <div class="pagination-area">
+    <%= paginate @articles, theme: "twitter-bootstrap-4"%>
   </div>
 </div>

@@ -5,9 +5,8 @@
         <%= link_to article_favorites_path(article), method: :post, remote: true do %>
           <%= image_tag'okini2.png', :size => '100x75' %>
         <% end %>
-
       </p>
-      <% else %>
+    <% else %>
       <p class='favorite-color'>
         <%= link_to article_favorites_path(article), method: :delete, remote: true  do %>
           <%= image_tag'okini3.png', :size => '100x75' %>
