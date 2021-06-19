@@ -37,8 +37,8 @@
 
 　　　　　<div class="print-hide">
             <% if @article.video.attached? %>
-            <div class="mt-5"><h2>動画</h2></div>
-            <video src="<%= rails_blob_path(@article.video) %>" type="video/mp4" controls></video>
+            <div class="mt-5 width-100-percent"><h2>動画</h2>
+            <video src="<%= rails_blob_path(@article.video) %>" type="video/mp4" controls></video></div>
             <% end %>
           </div>
 
