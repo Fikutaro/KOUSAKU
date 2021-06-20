@@ -14,6 +14,6 @@ $(document).on 'turbolinks:load', ->
                 ["para", ["ul", "ol", "paragraph"]],
                 ["height", ["height"]],
                 ['insert', ['picture', 'link']],
-                 ['view', ['help']],
+                ['view', ['help']],
       ]
 

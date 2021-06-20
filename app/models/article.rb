@@ -12,8 +12,8 @@ class Article < ApplicationRecord
   validates :preface, length: { maximum: 1000 }
   validates :material, presence: true, length: { maximum: 500 }
   validates :production_time, presence: true, length: { maximum: 500 }
-  validates :difficulty, exclusion: { in: %w(選択してください), message: "を選んでください。" }
-  validates :body, presence: true, length: { maximum: 2000000 }
+  validates :difficulty, exclusion: { in: %w(選択してください), message: "を選んでください" }
+  validates :body, presence: true, length: { maximum: 1000000, message: "の画像サイズが大きすぎます"}
 
   has_one_attached :video
 

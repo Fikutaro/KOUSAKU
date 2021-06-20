@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, {only: [:edit, :update,:destroy]}
+  before_action :ensure_current_user, {only: [:edit, :update]}
+
+  def ensure_current_user
+    @user = User.find(params[:id])
+    if @user != current_user
+      flash[:danger]="編集権限がありません"
+      redirect_to("/articles")
+    end
+  end
+
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles
+    @articles = @user.articles.page(params[:page]).per(3)
   end
 
   def edit
@@ -11,9 +22,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id), success: "更新しました"
+      redirect_to user_path(@user.id), notice: "会員情報を更新しました"
     else
-      flash.now[:danger] = '更新に失敗しました。'
       render 'edit'
     end
   end

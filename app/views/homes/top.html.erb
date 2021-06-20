@@ -4,39 +4,38 @@
   <div class="b"><%= image_tag "zukou3.jpg", class:"c" %></div>
 </div>
 <div class="container">
-
   <div class="text-right">
     <%= link_to homes_about_path do %>
-      <%= image_tag "tyoki.png", :size => "500x200" %>
+      <%= image_tag "tyoki.png",class: "turn", :size => "500x200" %>
     <% end %>
   </div>
-  
+
   <div class="text-center">
     <h1 class="padding-h1">工作をさがす</h1>
   </div>
-  
-  <div class="row">
-    <div class="col-4 text-center">
+
+  <div class="row margin-img">
+    <div class="col-4 text-center big">
       <%= link_to "/articles?utf8=%E2%9C%93&tag_id=1" do %>
         <%= image_tag "kantan2.png", :size => "200x200" %>
       <% end %>
     </div>
-    <div class="col-4 text-center">
+    <div class="col-4 text-center big">
       <%= link_to "/articles?utf8=%E2%9C%93&tag_id=2" do %>
         <%= image_tag"asoberu2.png", :size => "200x200" %>
       <% end %>
     </div>
-    <div class="col-4 text-center">
+    <div class="col-4 text-center big">
       <%= link_to "/articles?utf8=%E2%9C%93&tag_id=3" do %>
         <%= image_tag"tanjikan2.png", :size => "200x200" %>
       <% end %>
     </div>
   </div>
-  
+
   <div class="row hoge">
-    <h1>みんなのお気に入りランキング</h1>
+    <h1 class="padding-h1">みんなのお気に入りランキング</h1>
   </div>
-  
+
   <% if @all_ranks.empty? %>
     <div class="row hoge">
       <h3>表示する記事がありません</h3>
@@ -44,7 +43,7 @@
   <% else %>
     <div class="row">
       <% @all_ranks.each.with_index(1) do |article, i| %>
-        <div class="col-lg-3 col-xs-3 mt-5">
+        <div class="col-lg-3 col-xs-3 mt-2 mb-3">
           <h1 class="text-warning">
             第　<%= i %>　位
           </h1>
@@ -52,12 +51,12 @@
             お気に入り数：<%= article.favorites.count %>
           </h2>
         </div>
-        <div class="col-lg-4 col-xs-5 mt-5">
+        <div class="col-lg-4 col-xs-5 mt-2 mb-3">
           <%= link_to article_path(article) do %>
-            <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: "jpeg", fallback: "person.jpg", size:"300x300"%></div>
+            <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: "jpeg", fallback: "person.jpg", size:"300x300", class:"bottom-up"%></div>
           <% end %>
         </div>
-        <div class="col-lg-5 col-xs-4 mt-5">
+        <div class="col-lg-5 col-xs-4 mt-2 mb-3">
           <div class="d-flex flex-column">
             <%= link_to article_path(article) do %>
               <div><h2><%= article.title %><h2></div>

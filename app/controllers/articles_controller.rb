@@ -1,5 +1,14 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, {only: [:new,:create, :edit, :update,:destroy]}
+  before_action :ensure_current_user, {only: [:edit, :update, :destroy]}
 
+  def ensure_current_user
+    @article = Article.find(params[:id])
+    if @article.user != current_user
+      flash[:danger]="編集権限がありません"
+      redirect_to("/articles")
+    end
+  end
 
   def index
     @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles.page(params[:page]).per(8) : Article.all.page(params[:page]).per(8)
@@ -30,7 +39,7 @@ class ArticlesController < ApplicationController
     tag_list = params[:article][:tag_ids].split(",")
     if @article.save
       @article.save_tags(tag_list)
-      redirect_to articles_path
+      redirect_to articles_path, notice: "記事の投稿ができました"
     else
       @tags = Tag.all
       @tag_map =TagMap.all
@@ -52,7 +61,7 @@ class ArticlesController < ApplicationController
     tag_list = params[:article][:tag_ids].split(',')
     if @article.update(article_params)
       @article.save_tags(tag_list)
-      redirect_to user_path(current_user.id), success: "更新しました"
+      redirect_to user_path(current_user.id), notice: "投稿を更新しました"
     else
       @tag_list =@article.tags.pluck(:tag_name).join(",")
       @tag_map =TagMap.all
@@ -64,7 +73,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user.id), notice: "投稿を削除しました"
   end
 
   private

@@ -82,3 +82,33 @@
 
 .article-new[type="submit"]:hover {
   background:#ff1a94; }
+
+.border-show {
+  position: relative;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  border: solid 3px #ff4dac;
+  border-radius: 8px;
+}
+
+.border-show .box-title {
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: #FFF;
+  color: #ff4dac;
+  font-weight: bold;
+}
+
+.box26 p {
+    margin: 0;
+    padding: 0;
+}
+
+.margin-douga{
+  margin-top : 2em;
+}

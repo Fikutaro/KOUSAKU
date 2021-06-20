@@ -199,3 +199,26 @@ h1{
 .nonefont > input {
   font-family: none !important;
 }
+
+
+.big {
+  transition: all 0.2s;
+}
+
+.big:hover {
+  transform: scale(1.2, 1.2) !important;
+}
+
+.turn {
+  transition: all 1s;
+}
+
+.turn:hover {
+  transform: rotateX( 360deg ) !important;
+}
+
+.bottom-up:hover {
+  box-shadow: 0 5px 10px black;
+　transform: translate(0, -5px);
+}
+
