@@ -3,7 +3,7 @@
     <div class='col-md-6 col-xs-12'>
       <div class="d-flex flex-column text-center mt-3 pb-3">
          <%= link_to article_path(article) do %>
-         <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "person.jpg", size:'300x300', class:"bottom-up"%></div>
+         <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.png", size:'300x300', class:"bottom-up"%></div>
          <div class="mt-1"><h2><%= article.title %><h2></div>
          <% end %>
          <div><h4><%= article.preface %></h4></div>
@@ -20,7 +20,7 @@
          <div>
              <%= link_to user_path(article.user) do %>
              投稿者：<%= article.user.nickname %>
-             <%= attachment_image_tag article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "person.jpg", size:'40x40', class:"rounded-circle" %>
+             <%= attachment_image_tag article.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'40x40', class:"rounded-circle" %>
              <% end %>
          </div>
 

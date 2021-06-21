@@ -9,7 +9,7 @@
 </div>
 <div class="container">
   <div class="row hoge">
-    <h1 class="heading08"><span>Customer Detail</span>会員さま詳細</h1>
+    <h1 class="heading08"><span>Customer Detail</span>会員詳細</h1>
   </div>
   <div class="row">
     <div class="col-2"></div>
@@ -41,7 +41,7 @@
           <tr>
             <td>
              <label for="inputImage">ProfileImage</label>
-             <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "person.jpg", format: "jpeg",size:"100x100", class:"rounded-circle"%>
+             <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: "jpeg",size:"100x100", class:"rounded-circle"%>
             </td>
             <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></td>
           </tr>
