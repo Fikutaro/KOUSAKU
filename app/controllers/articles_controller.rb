@@ -11,13 +11,18 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles.page(params[:page]).per(8) : Article.all.page(params[:page]).per(8)
+    @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles.page(params[:page]).per(8) : Article.all.page(params[:page]).per(8).order(created_at: :DESC)
   end
 
   def search
     #Viewのformで取得したパラメータをモデルに渡す
     @articles = Article.search(params[:keyword]).page(params[:page]).per(8)
     @keyword = params[:keyword]
+    selection = params[:sort]
+    if selection.present?
+      @articles = Kaminari.paginate_array(Article.sort(selection)).page(params[:page]).per(8)
+    end
+    @sorted = params[:sort]
     render "index"
   end
 

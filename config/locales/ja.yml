@@ -9,6 +9,11 @@ ja:
         production_time: 製作時間
         difficulty: むずかしさ
       user:
+        last_name: 姓
+        first_name: 名
+        kana_last_name: 姓(カタカナ)
+        kana_first_name: 名(カタカナ)
+        nickname: おなまえ(表示名)
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -32,11 +37,6 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-        last_name: 姓
-        first_name: 名
-        kana_last_name: 姓(カタカナ)
-        kana_first_name: 名(カタカナ)
-        nickname: おなまえ(表示名)
     models:
       user: 会員
       article: 記事

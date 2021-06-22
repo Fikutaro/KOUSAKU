@@ -3,6 +3,14 @@
   <div class="row ">
     <h1 class="heading08"><span>Crafts</span>みんなの工作</h1>
   </div>
+  <%= form_with model: @article, url: search_path, method: :get, local: true do |f| %>
+      <%= f.select :sort,[  ['ならべかえ', ''],
+                            ['あたらしい順', 'new'],
+                            ['ふるい順', 'old'],
+                            ['お気に入りおおい順', 'likes'],
+                          ], {selected: @sorted}, onChange: "javascript: this.form.submit();" %>
+
+  <% end %>
   <div class="search-right">
     <div class="tag-search-form">
       <%= form_with url: articles_path, method: :get, class: "jiyuu" do %>

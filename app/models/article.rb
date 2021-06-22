@@ -9,7 +9,7 @@ class Article < ApplicationRecord
   attachment :article_image
 
   validates :title, presence: true, length: { maximum: 50 }
-  validates :preface, length: { maximum: 1000 }
+  validates :preface, length: { maximum: 100 }
   validates :material, presence: true, length: { maximum: 500 }
   validates :production_time, presence: true, length: { maximum: 500 }
   validates :difficulty, exclusion: { in: %w(選択してください), message: "を選んでください" }
@@ -36,6 +36,17 @@ class Article < ApplicationRecord
       self.tags << article_tag
     end
   end
+
+  def self.sort(selection)
+      case selection
+      when 'new'
+        return all.order(created_at: :DESC)
+      when 'old'
+        return all.order(created_at: :ASC)
+      when 'likes'
+        return find(Favorite.group(:article_id).order(Arel.sql('count(article_id) desc')).pluck(:article_id))
+      end
+    end
 
   enum difficulty: {
     "選択してください": 0, "かんたん":1, "ふつう":2, "むずかしい":3}

@@ -6,7 +6,7 @@
          <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.png", size:'300x300', class:"bottom-up"%></div>
          <div class="mt-1"><h2><%= article.title %><h2></div>
          <% end %>
-         <div><h4><%= article.preface %></h4></div>
+         <div><p><%= article.preface %></p></div>
          <div>
             <% article.tags.each do |tag| %>
              <%= link_to "/articles?utf8=%E2%9C%93&tag_id=#{tag.id}", class:"no-underline" do %>
