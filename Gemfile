@@ -76,6 +76,7 @@ gem 'rails-i18n'
 gem 'enum_help'
 gem 'summernote-rails'
 gem 'bootstrap4-kaminari-views'
+gem 'carrierwave'
 group :production do
   gem 'mysql2'
 end

@@ -1,6 +1,6 @@
 <div class="a">
-  <div class="b"><%= image_tag "zukou1.jpg", class:"c" %></div>
   <div class="b"><%= image_tag "zukou2.jpg", class:"c" %></div>
+  <div class="b"><%= image_tag "zukou1.jpg", class:"c" %></div>
   <div class="b"><%= image_tag "zukou3.jpg", class:"c" %></div>
 </div>
 <div class="container">
@@ -43,11 +43,13 @@
   <% else %>
     <div class="row">
       <% @all_ranks.each.with_index(1) do |article, i| %>
-        <div class="col-lg-3 col-xs-3 mt-2 mb-3">
-          <h1 class="text-warning">
-            第　<%= i %>　位
-          </h1>
-          <h2>
+        <div class="col-lg-4 col-xs-3 mt-2 mb-3">
+            <h1 class="text-ranking">
+              <%= image_tag "oukan.png", :size => "50x50" %>
+              第 <%= i %> 位
+              <%= image_tag "oukan.png", :size => "50x50" %>
+            </h1>
+          <h2 class="text-favorite ">
             お気に入り数：<%= article.favorites.count %>
           </h2>
         </div>
@@ -56,15 +58,17 @@
             <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: "jpeg", fallback: "no_image.png", size:"300x300", class:"bottom-up"%></div>
           <% end %>
         </div>
-        <div class="col-lg-5 col-xs-4 mt-2 mb-3">
+        <div class="col-lg-4 col-xs-4 mt-2 mb-3">
           <div class="d-flex flex-column">
             <%= link_to article_path(article) do %>
               <div><h2><%= article.title %><h2></div>
             <% end %>
-            <div><h4><%= article.preface %></h4></div>
+            <div><p><%= article.preface %></p></div>
             <div>
               <% article.tags.each do |tag| %>
-                <span class="tag"><%= tag.tag_name %></span>
+                <%= link_to "/articles?utf8=%E2%9C%93&tag_id=#{tag.id}", class:"no-underline" do %>
+                  <span class="tag"><%= tag.tag_name %></span>
+                <% end %>
               <% end %>
             </div>
             <div>材料：<%= article.material %></div>

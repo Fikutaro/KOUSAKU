@@ -3,34 +3,38 @@
   <div class="row ">
     <h1 class="heading08"><span>Crafts</span>みんなの工作</h1>
   </div>
-  <%= form_with model: @article, url: search_path, method: :get, local: true do |f| %>
-      <%= f.select :sort,[  ['ならべかえ', ''],
-                            ['あたらしい順', 'new'],
-                            ['ふるい順', 'old'],
-                            ['お気に入りおおい順', 'likes'],
-                          ], {selected: @sorted}, onChange: "javascript: this.form.submit();" %>
-
-  <% end %>
-  <div class="search-right">
-    <div class="tag-search-form">
-      <%= form_with url: articles_path, method: :get, class: "jiyuu" do %>
-        <%= select_tag :tag_id,
-        options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
-        {
-        prompt: "タグで検索",
-        class: "jiyuu",
-        onchange: "submit(this.form);"
-        }%>
+  <div class="row">
+    <div class="col-md-3 col-xs-12 sort-box">
+      <%= form_with model: @article, url: search_path, method: :get, local: true do |f| %>
+        <%= f.select :sort,[  ['ならべかえ', ''],
+                              ['あたらしい順', 'new'],
+                              ['ふるい順', 'old'],
+                              ['お気に入りおおい順', 'likes'],
+                            ], {selected: @sorted}, onChange: "javascript: this.form.submit();" %>
       <% end %>
     </div>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <div class="search-form">
-      <%= form_with url: search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :keyword, value: @keyword, placeholder:" キーワードで検索" %>
-        <input type="submit" value="&#xf002;">
-      <% end %>
+    <div class="col-md-9 col-xs-12 search-right">
+      <div class="tag-search-form">
+        <%= form_with url: articles_path, method: :get, class: "jiyuu" do %>
+          <%= select_tag :tag_id,
+          options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+          {
+          prompt: "タグで検索",
+          class: "jiyuu",
+          onchange: "submit(this.form);"
+          }%>
+        <% end %>
+      </div>
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <div class="search-form">
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, value: @keyword, placeholder:" キーワードで検索" %>
+          <input type="submit" value="&#xf002;">
+        <% end %>
+      </div>
     </div>
   </div>
+
   <%= render "articles/index", articles: @articles %>
   <div class="pagination-area">
     <%= paginate @articles, theme: "twitter-bootstrap-4"%>

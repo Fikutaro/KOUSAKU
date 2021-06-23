@@ -49,7 +49,6 @@ class ArticlesController < ApplicationController
       @tags = Tag.all
       @tag_map =TagMap.all
       @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
-      @article.body = "SIZE OVER"
       render :new
     end
   end

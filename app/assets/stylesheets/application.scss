@@ -166,6 +166,14 @@ h1{
   border-right: 2px solid;
 }
 
+.sort-box > form {
+  padding-top: 3px;
+}
+
+.sort-box > form > select {
+  padding: 4px 0;
+}
+
 .pagination-area {
   display: flex;
   justify-content: center;
