@@ -19,5 +19,5 @@ class FavoritesController < ApplicationController
     @favorite_list = Article.find(favorites)
   end
 
-  
+
 end

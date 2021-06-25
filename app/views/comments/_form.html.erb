@@ -1,0 +1,6 @@
+<div class="new-comment mt-3">
+  <%= form_with(model:[article, comment],url: article_comments_path(@article) ,remote: true) do |f| %>
+    <%= f.text_area :comment_content, rows:"5",placeholder: "コメントはこちらに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

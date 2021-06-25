@@ -25,7 +25,7 @@
           }%>
         <% end %>
       </div>
-      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
       <div class="search-form">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
           <%= f.text_field :keyword, value: @keyword, placeholder:" キーワードで検索" %>

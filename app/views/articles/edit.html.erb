@@ -34,10 +34,10 @@
           <span class="tag-all "><%= tag.tag_name %>【<%= @tag_map.where(tag_id: tag.id).count %>】</span>
         <% end %>
 
-        <h5>材料<span class="need">必須</span></h5>
+        <h5>つかうもの<span class="need">必須</span></h5>
         <%= f.text_field :material, placeholder: "複数ある場合は(スペース)で区切ってください。" %>
 
-        <h5>製作時間<span class="need">必須</span></h5>
+        <h5>かかる時間<span class="need">必須</span></h5>
         <%= f.text_field :production_time %>
 
         <h5>むずかしさ<span class="need">必須</span></h5>
@@ -46,7 +46,7 @@
         <h5>動画</5>
         <%= f.file_field :video %>
 
-        <h5>本文<span class="need">必須</span></h5>
+        <h5>つくりかた<span class="need">必須</span></h5>
         <div class="main-field">
           <%= f.text_area :body ,value:@article.body, "data-provider": :summernote %>
         </div>

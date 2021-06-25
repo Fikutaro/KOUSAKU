@@ -1,0 +1,12 @@
+<p class="text-right">コメント件数：<%= comments.count %></p>
+<% comments.each do |comment| %>
+  <div class="mb-4 mt-4"><span class="hukidasi"><%= comment.comment_content %></span></div>
+  <div>
+    <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, format: "jpeg", fallback: "no_image.jpg", size:"60x60", class:"rounded-circle"%>
+    <%= comment.user.nickname %>
+    <span class="ml-4"><%= comment.created_at.strftime("%Y/%m/%d") %></span>
+    <% if comment.user == current_user %>
+      <%= link_to "削除", article_comment_path(comment.article_id, comment.id), method: :delete,remote: true, class: "btn btn-sm btn-danger" %>
+    <% end %>
+  </div>
+<% end %>

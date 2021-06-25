@@ -5,8 +5,8 @@ ja:
         title: タイトル
         preface: 前書き
         body: 本文
-        material: 材料
-        production_time: 製作時間
+        material: つかうもの
+        production_time: かかる時間
         difficulty: むずかしさ
       user:
         last_name: 姓

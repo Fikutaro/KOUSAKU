@@ -4,6 +4,7 @@
       <button class="print p-2"><i class="fas fa-print"></i>　印刷する</button>
       <div class="d-flex flex-column text-center">
         <div><h1><%= @article.title %></h1></div>
+        <!--プリントの際隠す-->
         <div class="print-hide">
           <% @article.tags.each do |tag| %>
             <%= link_to "/articles?utf8=%E2%9C%93&tag_id=#{tag.id}", class:"no-underline" do %>
@@ -16,13 +17,14 @@
              投稿者：<%= @article.user.nickname %>
              <%= attachment_image_tag @article.user, :profile_image, :fill, 50, 50, format: "jpeg", fallback: "no_image.jpg", size:"60x60", class:"rounded-circle" %>
           <% end %>
+          <div class="mt-3">投稿日：<%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></div>
           <div class="print-hide mt-2">
           <% if @article.user == current_user %>
             <%= link_to "編集する", edit_article_path(@article), class: "btn btn-sm btn-success edit_article_#{@article.id}" %>
             <%= link_to "この記事を削除する", article_path(@article), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_article_#{@article.id}"%>
           <% end %>
-        </div>
         </div></h5>
+        </div>
 
         <div class="mt-5 width-100-percent mb-4"><%= attachment_image_tag @article, :article_image, format: "jpeg", fallback: "no_image.png"%></div>
         <% if @article.preface.present? %>
@@ -43,7 +45,7 @@
         </div>
 
         <div class="mt-3 border-show">
-          <span class="box-title"><h2>材料</h2></span>
+          <span class="box-title"><h2>つかうもの</h2></span>
           <p class="text-left mt-4"><%= @article.material %></p>
         </div>
 
@@ -58,7 +60,7 @@
 
         <div class="mt-3 border-show text-left">
           <span class="box-title"><h2>つくりかた</h2></span>
-          <div class="mt-4 width-100-percent"><%= sanitize @article.body%></div>
+          <div class="mt-5 width-100-percent"><%= sanitize @article.body%></div>
         </div>
 
         <div class="print-hide">
@@ -70,25 +72,13 @@
       <div class="print-hide">
         <div class="comments border-top">
           <h3 class="text-left mt-3">この記事のコメント</h3>
-          <p class="text-right">コメント件数：<%= @article.comments.count %></p>
-          <% @article.comments.each do |comment| %>
-            <div class="mb-4 mt-4"><span class="hukidasi"><%= comment.comment_content %></span></div>
-            <div>
-              <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, format: "jpeg", fallback: "no_image.jpg", size:"60x60", class:"rounded-circle"%>
-              <%= comment.user.nickname %>
-              <%= comment.created_at.strftime("%Y/%m/%d") %>
-              <% if comment.user == current_user %>
-                <%= link_to "削除", article_comment_path(comment.article, comment), method: :delete, class: "btn btn-sm btn-danger" %>
-              <% end %>
-            </div>
-          <% end %>
+          <div id="comments_area">
+            <%= render partial: "comments/index", locals: { comments: @comments } %>
+          </div>
         </div>
         <% if user_signed_in? %>
-          <div class="new-comment mt-3">
-            <%= form_with(model:[@article, @comment], local: true) do |f| %>
-              <%= f.text_area :comment_content, rows:"5",placeholder: "コメントをここに" %>
-              <%= f.submit "送信する" %>
-            <% end %>
+          <div class="comment-create">
+            <%= render partial: "comments/form", locals: { comment: @comment, article: @article } %>
           </div>
         <% end %>
       </div>

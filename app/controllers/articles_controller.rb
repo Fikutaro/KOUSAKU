@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
+     # タグ検索[:tag_id]ある場合は検索、ない場合は全件表示。.order(created_at: :DESC)で新しい順に表示
     @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles.page(params[:page]).per(8) : Article.all.page(params[:page]).per(8).order(created_at: :DESC)
   end
 
@@ -29,16 +30,18 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
+    @comments = @article.comments.order(created_at: :desc)
   end
 
   def new
     @article = Article.new
     @tags = Tag.all
     @tag_map =TagMap.all
-    @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
+    @tag_ranks = Tag.find(TagMap.group(:tag_id).order("count(tag_id) desc").limit(20).pluck(:tag_id))    # タグが多い順に表示
   end
 
   def create
+    # タグも同時にcreate
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     tag_list = params[:article][:tag_ids].split(",")
@@ -48,7 +51,7 @@ class ArticlesController < ApplicationController
     else
       @tags = Tag.all
       @tag_map =TagMap.all
-      @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
+      @tag_ranks = Tag.find(TagMap.group(:tag_id).order("count(tag_id) desc").limit(20).pluck(:tag_id))
       render :new
     end
   end
@@ -57,7 +60,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @tag_list =@article.tags.pluck(:tag_name).join(",")
     @tag_map =TagMap.all
-    @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
+    @tag_ranks = Tag.find(TagMap.group(:tag_id).order("count(tag_id) desc").limit(20).pluck(:tag_id))
   end
 
   def update
@@ -69,7 +72,7 @@ class ArticlesController < ApplicationController
     else
       @tag_list =@article.tags.pluck(:tag_name).join(",")
       @tag_map =TagMap.all
-      @tag_ranks = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(20).pluck(:tag_id))
+      @tag_ranks = Tag.find(TagMap.group(:tag_id).order("count(tag_id) desc").limit(20).pluck(:tag_id))
       render 'edit'
     end
   end

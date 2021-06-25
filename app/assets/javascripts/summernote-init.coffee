@@ -14,7 +14,7 @@ sendFile = (file, toSummernote) ->
       console.log data
       img.setAttribute('id', "sn-image-#{data.upload_id}")
       toSummernote.summernote 'insertNode', img
-
+ 
 deleteFile = (file_id) ->
   $.ajax
     type: 'DELETE'
@@ -22,6 +22,8 @@ deleteFile = (file_id) ->
     cache: false
     contentType: false
     processData: false
+
+# 画像は別モデルで保存
 
 $(document).on 'turbolinks:load', ->
   $('[data-provider="summernote"]').each ->

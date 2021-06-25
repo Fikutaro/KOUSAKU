@@ -32,7 +32,7 @@ $(function(){
     header.hide();
     footer.hide();
     comments.hide();
-
+    // プリントしたくない場所
 
     window.print();
 
@@ -42,6 +42,8 @@ $(function(){
 
   });
 });
+
+
 
 $(document).on('turbolinks:load', function() {
   $(function() {

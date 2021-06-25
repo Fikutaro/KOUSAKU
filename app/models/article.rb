@@ -19,6 +19,7 @@ class Article < ApplicationRecord
 
   def self.search(keyword)
     where(["title like? OR body like? OR preface like? OR material like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    #タイトル、つくりかた、前書き、つかうものから検索 
   end
 
   def save_tags(savearticle_tags)
@@ -26,27 +27,29 @@ class Article < ApplicationRecord
     old_tags = current_tags - savearticle_tags
     new_tags = savearticle_tags - current_tags
 
+  # 既存のタグがある場合
     old_tags.each do |old_name|
       self.tags.delete Tag.find_by(tag_name: old_name)
     end
 
-
+  #同名のタグがない場合、新しいタグ作成 
     new_tags.each do |new_name|
       article_tag = Tag.find_or_create_by(tag_name: new_name)
       self.tags << article_tag
     end
   end
 
+# 記事の並べ替え
   def self.sort(selection)
-      case selection
-      when 'new'
-        return all.order(created_at: :DESC)
-      when 'old'
-        return all.order(created_at: :ASC)
-      when 'likes'
-        return find(Favorite.group(:article_id).order(Arel.sql('count(article_id) desc')).pluck(:article_id))
-      end
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    when 'likes'
+      return find(Favorite.group(:article_id).order(Arel.sql('count(article_id) desc')).pluck(:article_id))
     end
+  end
 
   enum difficulty: {
     "選択してください": 0, "かんたん":1, "ふつう":2, "むずかしい":3}

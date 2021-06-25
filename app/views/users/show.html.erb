@@ -6,20 +6,23 @@
   <div class="row">
     <div class="col-4">
       <h1 class='text-center pb-5'>会員情報</h1>
+      <% if user_signed_in? %>
+        <p class="text-primary"> ※青字は他の会員には表示されません </p>
+      <% end %>
       <table class="table">
         <% if user_signed_in? %>
           <% if @user.id == current_user.id %>
             <tr>
-              <th>氏名</th>
-              <th><%= @user.last_name %><%= @user.first_name %></th>
+              <th class="text-primary">氏名</th>
+              <th class="text-primary"><%= @user.last_name %><%= @user.first_name %></th>
             </tr>
             <tr>
-              <th>フリカナ</th>
-              <th><%= @user.kana_last_name %><%= @user.kana_first_name %></th>
+              <th class="text-primary">フリガナ</th>
+              <th class="text-primary"><%= @user.kana_last_name %><%= @user.kana_first_name %></th>
             </tr>
             <tr>
-              <th>メールアドレス</th>
-              <th><%= @user.email %></th>
+              <th class="text-primary">メールアドレス</th>
+              <th class="text-primary"><%= @user.email %></th>
              </tr>
           <% end %>
         <% end %>
@@ -45,37 +48,41 @@
 
     <div class='col-8'>
       <h1 class='text-center pb-5'>この人の工作</h1>
-      <% @articles.each do |article| %>
-        <div class="d-flex flex-column text-center mt-5 pb-5">
-          <%= link_to article_path(article) do %>
-            <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.png", size:'300x300', class:"bottom-up" %></div>
-            <div class="mt-1"><h2><%= article.title %><h2></div>
-          <% end %>
-          <div><p><%= article.preface %></p></div>
-          <div>
-            <% article.tags.each do |tag| %>
-              <%= link_to "/articles?utf8=%E2%9C%93&tag_id=#{tag.id}", class:"no-underline" do %>
-                <span class='tag'><%= tag.tag_name %></span>
-              <% end %>  
+      <% if @articles.empty? %>
+        <h3 class="text-center">投稿はありません</h3>
+      <% else %>
+        <% @articles.each do |article| %>
+          <div class="d-flex flex-column text-center mt-5 pb-5">
+            <%= link_to article_path(article) do %>
+              <div><%= attachment_image_tag article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.png", size:'300x300', class:"bottom-up" %></div>
+              <div class="mt-1"><h2><%= article.title %><h2></div>
             <% end %>
+            <div><p><%= article.preface %></p></div>
+            <div>
+              <% article.tags.each do |tag| %>
+                <%= link_to "/articles?utf8=%E2%9C%93&tag_id=#{tag.id}", class:"no-underline" do %>
+                  <span class='tag'><%= tag.tag_name %></span>
+                <% end %>
+              <% end %>
+            </div>
+            <div>つかうもの：<%= article.material %></div>
+            <div>かかる時間：<%= article.production_time %></div>
+            <div>むずかしさ：<%= article.difficulty %></div>
+            <div class='star-btn' id="favorite_<%= article.id %>">
+              <%= render "favorites/favorite", article: article %>
+            </div>
+            <div>
+              <% if article.user == current_user %>
+              <%= link_to '編集する', edit_article_path(article), class: "btn btn-sm btn-success edit_article_#{article.id}" %>
+              <%= link_to "削除する", article_path(article), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_article_#{article.id}"%>
+              <% end %>
+            </div>
           </div>
-          <div>材料：<%= article.material %></div>
-          <div>かかる時間：<%= article.production_time %></div>
-          <div>むずかしさ：<%= article.difficulty %></div>
-          <div class='star-btn' id="favorite_<%= article.id %>">
-            <%= render "favorites/favorite", article: article %>
-          </div>
-          <div>
-            <% if article.user == current_user %>
-            <%= link_to '編集する', edit_article_path(article), class: "btn btn-sm btn-success edit_article_#{article.id}" %>
-            <%= link_to "削除する", article_path(article), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_article_#{article.id}"%>
-            <% end %>
-          </div>
+        <% end %>
+        <div class="pagination-area">
+          <%= paginate @articles, theme: "twitter-bootstrap-4"%>
         </div>
       <% end %>
-      <div class="pagination-area">
-        <%= paginate @articles, theme: "twitter-bootstrap-4"%>
-      </div>
     </div>
   </div>
 </div>
