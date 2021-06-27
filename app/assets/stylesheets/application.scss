@@ -265,5 +265,18 @@ h1{
 }
 
 .favo-margin {
-  margin: 3em;
+  margin-top: 2em;
+  margin-bottom: 6em;
+}
+
+.signup-bg {
+  background-image:image-url("signup.jpg");
+  background-size: cover;
+  padding: 5em;
+}
+
+.login-bg {
+  background-image:image-url("note1.jpg");
+  background-size: cover;
+  padding: 5em;
 }

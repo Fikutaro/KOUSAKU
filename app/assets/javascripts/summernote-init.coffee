@@ -14,7 +14,7 @@ sendFile = (file, toSummernote) ->
       console.log data
       img.setAttribute('id', "sn-image-#{data.upload_id}")
       toSummernote.summernote 'insertNode', img
- 
+
 deleteFile = (file_id) ->
   $.ajax
     type: 'DELETE'
@@ -40,7 +40,7 @@ $(document).on 'turbolinks:load', ->
             deleteFile upload_id
           target.remove()
       placeholder: "本文をこちらに記入してください。<br>番号リストや画像を入れることもできます。",
-      fontSizes:['10', '11', '12', '13','14', '18', '24', '36'],
+      fontSizes:['10', '11', '12', '13','14', '16', '18', '24', '36'],
       toolbar: [
                 ["style", ["style"]],
                 ["fontsize", ["fontsize"]],

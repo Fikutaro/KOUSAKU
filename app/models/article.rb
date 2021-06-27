@@ -5,7 +5,6 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
-  has_many :chapters, dependent: :destroy
   attachment :article_image
 
   validates :title, presence: true, length: { maximum: 50 }
@@ -19,7 +18,7 @@ class Article < ApplicationRecord
 
   def self.search(keyword)
     where(["title like? OR body like? OR preface like? OR material like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
-    #タイトル、つくりかた、前書き、つかうものから検索 
+    #タイトル、つくりかた、前書き、つかうものから検索
   end
 
   def save_tags(savearticle_tags)
@@ -32,7 +31,7 @@ class Article < ApplicationRecord
       self.tags.delete Tag.find_by(tag_name: old_name)
     end
 
-  #同名のタグがない場合、新しいタグ作成 
+  #同名のタグがない場合、新しいタグ作成
     new_tags.each do |new_name|
       article_tag = Tag.find_or_create_by(tag_name: new_name)
       self.tags << article_tag
