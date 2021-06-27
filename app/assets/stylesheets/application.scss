@@ -231,6 +231,13 @@ h1{
   transform: rotateX( 360deg ) !important;
 }
 
+.bottom-up {
+　background: skyblue;
+　padding: 8px 16px;
+　color: white;
+}
+
+
 .bottom-up:hover {
   box-shadow: 0 5px 10px black;
 　transform: translate(0, -5px);
@@ -255,4 +262,8 @@ h1{
 
 #result2 > img {
   max-width: 100px;
+}
+
+.favo-margin {
+  margin: 3em;
 }

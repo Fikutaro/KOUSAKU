@@ -19,7 +19,7 @@
           <%= select_tag :tag_id,
           options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
           {
-          prompt: "タグで検索",
+          prompt: "タグでけんさく",
           class: "jiyuu",
           onchange: "submit(this.form);"
           }%>
@@ -28,7 +28,7 @@
 
       <div class="search-form">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword, value: @keyword, placeholder:" キーワードで検索" %>
+          <%= f.text_field :keyword, value: @keyword, placeholder:"ことばでけんさく" %>
           <input type="submit" value="&#xf002;">
         <% end %>
       </div>

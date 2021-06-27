@@ -5,8 +5,10 @@
   <% if @favorite_list.present? %>
     <%= render "articles/index", articles: @favorite_list %>
   <% else %>
-  <h2 class="text-center mb-5">
-    お気に入りがありません<br>
-  </h2>
+  <div class="favo-margin">
+    <h1 class="text-center">
+      お気に入りがありません<br>
+    </h1>
+  </div>
   <% end %>
 </div>
