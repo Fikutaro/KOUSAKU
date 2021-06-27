@@ -248,3 +248,11 @@ h1{
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
+
+#result > img {
+  max-width: 300px;
+}
+
+#result2 > img {
+  max-width: 100px;
+}

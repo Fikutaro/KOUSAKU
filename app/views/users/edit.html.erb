@@ -40,10 +40,15 @@
           </tr>
           <tr>
             <td>
-             <label for="inputImage">ProfileImage</label>
-             <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: "jpeg",size:"100x100", class:"rounded-circle"%>
+             <label for="inputImage">アイコン</label>
+             <div id="result2"><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: "jpeg",size:"100x100", class:"rounded-circle"%></div>
             </td>
-            <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></td>
+            <td><div class="nonefont"><%= f.attachment_field :profile_image, placeholder: "プロフィール画像", id:"file"  %></div></td>
+
+
+
+
+
           </tr>
           <tr>
             <td><lebel class="under">じこしょうかい</lebel></td>
@@ -57,3 +62,21 @@
     </div>
   </div>
 </div>
+
+
+<script>
+$(function(){
+    $('#file').change(function(){
+        $('result2 > img').remove();
+        var file = $(this).prop('files')[0];
+        if(!file.type.match('image.*')){
+            return;
+        }
+        var fileReader = new FileReader();
+        fileReader.onloadend = function() {
+            $('#result2').html('<img src="' + fileReader.result + '"/>');
+        }
+        fileReader.readAsDataURL(file);
+    });
+});
+</script>

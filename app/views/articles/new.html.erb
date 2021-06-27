@@ -15,8 +15,11 @@
     <%= form_with model:@article, local:true do |f| %>
 
       <h5>メイン画像</h5>
-      <%= attachment_image_tag @article, :article_image, :fill, 100, 100, format: "jpeg",size:"300x300"%>
-      <div class="nonefont"><%= f.attachment_field :article_image, placeholder: "メイン画像" %> </div>
+      <div id="result" class="mb-3">
+        <%= attachment_image_tag @article, :article_image, :fill, 300, 300, fallback: "no_image.png", size:"300x300" %>
+      </div>
+      <div class="nonefont"><%= f.attachment_field :article_image, placeholder: "メイン画像", id:"file" %> </div>
+
 
       <div class="article-new">
         <h5>タイトル<span class="need">必須</span></h5>
@@ -56,3 +59,20 @@
     <% end %>
   </div>
 </div>
+
+<script>
+$(function(){
+    $('#file').change(function(){
+        $('result > img').remove();
+        var file = $(this).prop('files')[0];
+        if(!file.type.match('image.*')){
+            return;
+        }
+        var fileReader = new FileReader();
+        fileReader.onloadend = function() {
+            $('#result').html('<img src="' + fileReader.result + '"/>');
+        }
+        fileReader.readAsDataURL(file);
+    });
+});
+</script>

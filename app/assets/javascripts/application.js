@@ -23,6 +23,9 @@
 // load specific locale(ja-JP)
 //= require summernote/lang/summernote-ja-JP
 
+
+
+document.addEventListener("turbolinks:load", function() {
 $(function(){
   $('.print').click(function(){
     let header = $('header'),
@@ -42,7 +45,7 @@ $(function(){
 
   });
 });
-
+})
 
 
 $(document).on('turbolinks:load', function() {
