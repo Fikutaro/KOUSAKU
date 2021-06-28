@@ -7,6 +7,8 @@
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
 
+    <!--favicon-->
+    <%= favicon_link_tag('favicon.ico') %>
     <!--font-->
     <link href="https://fonts.googleapis.com/css?family=Corben:700" rel="stylesheet">
     <!-- slick -->
@@ -18,9 +20,9 @@
   </head>
   <body>
     <%= render "layouts/header"  %>
-    
+
       <%= yield %>
-    
+
     <%= render "layouts/footer"  %>
   </body>
 
