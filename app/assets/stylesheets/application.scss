@@ -19,9 +19,6 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css?family=Kosugi');
 
-main {
-overflow: hidden;
-}
 
 
 body {
@@ -185,9 +182,12 @@ h1{
   margin-top: 1em;
 }
 
+.hidden{
+  overflow: hidden;
+}
+
 .c{
-  height: 500px;
-  width :100%;
+  width : 100%;
 }
 
 .slick-dots {
@@ -243,18 +243,7 @@ h1{
 　transform: translate(0, -5px);
 }
 
-.bg-pink {
-  background-color: #ffffe0;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-}
 
-
-.bg-blue {
-  background-color: #ebffe0;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-}
 
 #result > img {
   max-width: 300px;
