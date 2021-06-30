@@ -89,4 +89,5 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :article_image, :preface, :body, :material, :production_time, :difficulty, :video)
   end
 
+
 end
