@@ -30,7 +30,7 @@
 
         <h5>タグ</h5>
         <%= f.text_field :tag_ids, id:"tag_ids",\
-          placeholder: "タグを複数つけるには　,(カンマ)　で区切ってください。" %>
+          placeholder: "タグをカンマ区切りで入力（例：かんたん,あそべる）" %>
 
         <span>よく使われているタグ【使用数】</span><br>
         <% @tag_ranks.each do |tag| %>
@@ -38,7 +38,7 @@
         <% end %>
 
         <h5>つかうもの<span class="need">必須</span></h5>
-        <%= f.text_field :material, placeholder: "複数ある場合は(スペース)で区切ってください。" %>
+        <%= f.text_field :material, placeholder: "つかうものはスペースで区切る（例：折り紙　はさみ）" %>
 
         <h5>かかる時間<span class="need">必須</span></h5>
         <%= f.text_field :production_time %>
