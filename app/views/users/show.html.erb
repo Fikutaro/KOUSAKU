@@ -7,7 +7,9 @@
     <div class="col-4 mb-3">
       <h1 class='text-center pb-5'>会員情報</h1>
       <% if user_signed_in? %>
-        <p class="text-success"> ※緑字は他の人は表示されません </p>
+        <% if @user.id == current_user.id %>
+          <p class="text-success"> ※緑字は他の人は表示されません </p>
+        <% end %>
       <% end %>
       <table class="table">
         <% if user_signed_in? %>
