@@ -39,16 +39,17 @@ $(document).on 'turbolinks:load', ->
           if !!upload_id
             deleteFile upload_id
           target.remove()
-      placeholder: "本文をこちらに記入してください。<br>番号リストや画像を入れることもできます。",
-      fontSizes:['10', '11', '12', '13','14', '16', '18', '24', '36'],
+      placeholder: "本文をこちらに記入してください。<br>画像を入れることもできます。",
+      fontSizes:["10", "11", "12", "13","14", "16", "18", "24", "36"],
       toolbar: [
                 ["style", ["style"]],
                 ["fontsize", ["fontsize"]],
                 ["color", ["color"]],
-                ["style", ["bold", "italic", "underline", "clear"]],
-                ['table', ['table']],
-                ["para", ["ul", "ol", "paragraph"]],
+                ["style", ["bold", "italic", "underline","strikethrough","clear"]],
+                ["para", ["paragraph"]],
                 ["height", ["height"]],
-                ['insert', ['picture', 'link']],
-                 ['view', ['help']],
+                ["insert", ["picture", "link"]],
+                ["view", ["undo","redo","fullscreen"]],
+                ["view", ["help"]]
+                # helpのみ2行目にしたいため、分けて記入
                 ]
